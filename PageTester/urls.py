@@ -26,7 +26,11 @@ schema_view = get_schema_view(
     openapi.Info(
         title='Landing Page Tester',
         default_version='v1',
-        description='Microservice for Testing Landing Pages',
+        description="""Microservice for Testing Various Landing Pages.Testing is simple,Testing is done using Postman API Testing tool.
+    To start with register to get signed up for your token via 'https://landingpagetester.microapi.dev/v1/register/' add your username and passord
+    to the body using the key-value, username and password been the respective keys and the values been your set username and password, also specify content-type and make sure it is set to application/json. Set the HTTP Method to post and hit send.
+    Next is to get your token via 'https://landingpagetester.microapi.dev/v1/api-token-auth/' still using the same body and content type as used at the register endpoint. Copy your token.
+    To test the endpoints disable/delete all info in the body tab and add your token to the header tab using key-value. Authorization as the key, Token <your token you copied> as the value. LET'S TEST!!!."""
         terms_of_service='https://www.google.com/policies/terms/',
         contact=openapi.Contact(email='contact@snippets.local'),
         license=openapi.License(name='BSD License')
@@ -49,14 +53,10 @@ urlpatterns = [
     # path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     re_path(r'^v1/documentation(?P<format>\.json)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('', include_docs_urls(title='Landing Page Tester', description=
-    """Microservice for Testing Various Landing Pages.Testing is simple,
-    register below in the /v1/register/ or using httpie using the command http post then go to /api-token-auth below to get your token or alternatively
-    via the Command line  '/api-token-auth/ username=   password= ' using httpie via the command http post.Testing can be done here 
-    or via a testing tool like Postman or via the Command Line using httpie.
-    If testing via Postman add your Token to the header Key = Authorization,Value = Token <your token>.
-    If testing using httpie always add 'Authorization: Token <your token>' after each end point.
-    To test here go to Authentication in the side bar, click on token. Fill in the Scheme field with 'Token' then the Token field with your generated token.
-    You are good to go.
-    """
+    """Microservice for Testing Various Landing Pages.Testing is simple,Testing is done using Postman API Testing tool.
+    To start with register to get signed up for your token via 'https://landingpagetester.microapi.dev/v1/register/' add your username and passord
+    to the body using the key-value, username and password been the respective keys and the values been your set username and password, also specify content-type and make sure it is set to application/json. Set the HTTP Method to post and hit send.
+    Next is to get your token via 'https://landingpagetester.microapi.dev/v1/api-token-auth/' still using the same body and content type as used at the register endpoint. Copy your token.
+    To test the endpoints disable/delete all info in the body tab and add your token to the header tab using key-value. Authorization as the key, Token <your token you copied> as the value. LET'S TEST!!!."""
     ,permission_classes=(permissions.AllowAny,)))
 ]
