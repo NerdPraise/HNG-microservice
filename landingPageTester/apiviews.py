@@ -119,6 +119,14 @@ class CreateUserApi(generics.CreateAPIView):
 
 
 class ConfigureDetailsApi(generics.CreateAPIView):
+    """
+    create:
+    Add Company 
+
+    put:
+    Update Company
+
+    """
     serializer_class = ConfigureSerializer
 
     def get_object(self, company_id):
