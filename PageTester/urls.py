@@ -30,7 +30,7 @@ schema_view = get_schema_view(
     To start with register to get signed up for your token via 'https://landingpagetester.microapi.dev/v1/register/' add your username and passord
     to the body using the key-value, username and password been the respective keys and the values been your set username and password, also specify content-type and make sure it is set to application/json. Set the HTTP Method to post and hit send.
     Next is to get your token via 'https://landingpagetester.microapi.dev/v1/api-token-auth/' still using the same body and content type as used at the register endpoint. Copy your token.
-    To test the endpoints disable/delete all info in the body tab and add your token to the header tab using key-value. Authorization as the key, Token <your token you copied> as the value. LET'S TEST!!!."""
+    To test the endpoints disable/delete all info in the body tab and add your token to the header tab using key-value. Authorization as the key, Token <your token you copied> as the value. LET'S TEST!!!.""",
         terms_of_service='https://www.google.com/policies/terms/',
         contact=openapi.Contact(email='contact@snippets.local'),
         license=openapi.License(name='BSD License')
