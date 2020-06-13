@@ -25,14 +25,6 @@ def delete_page(request, url):
 
 
 
-@api_view(["POST"])
-def create_page(request):
-    serializer = CreatePageSerializer(data=request.data)
-
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, staus=status.HTTP_400_BAD_REQUEST)
 
 
 class TrafficHistory(generics.ListAPIView):
@@ -158,3 +150,22 @@ class ConfigureDetailsApi(generics.CreateAPIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class PageApi(generics.CreateAPIView):
+    serializer_class = CreatePageSerializer
+
+    def get_object(self, page_url):
+        try:
+            return Page.objects.get(page_url=page_url)
+        except Page.DoesNotExist:
+            raise Http404
+ 
+    def post(self, request):
+        serializer = CreatePageSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+ 
+   
