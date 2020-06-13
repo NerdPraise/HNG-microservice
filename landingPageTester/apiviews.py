@@ -27,6 +27,7 @@ def delete_page(request, url):
 
 @api_view(["POST"])
 def create_page(request):
+    
     serializer = CreatePageSerializer(data=request.data)
 
     if serializer.is_valid():
