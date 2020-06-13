@@ -8,13 +8,13 @@ services:
         - POSTGRES_DB=postgres
         - POSTGRES_USER=user
         - POSTGRES_PASSWORD=password
-      command: python manage.py migrate
+    
     web:
       build: .
-      command: python manage.py runserver 0.0.0.0:8000
+      command: python manage.py runserver 0.0.0.0:11000
       volumes:
         - .:/code
       ports:
-        - "8000:8000"
+        - "11000:11000"
       depends_on:
         - db
