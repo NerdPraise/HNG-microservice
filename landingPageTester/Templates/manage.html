@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+  {% block content %}
+    <div class="result-section col-md-8 mx-auto">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="result card p-2">
+            <div class="card-header">
+             <h4>{{ page.page_name }}</h4>
+              <a href="{{page.page_url}}">{{ page.page_url }}</a>
+                    <form action="/get_url/{{page.id}}/" method="post">{% csrf_token %}
+                        <div class="text-right p-2">
+                            <button type="submit" class="float-right btn btn-sm btn-info px-3">Edit</button>
+                        </div>
+                    </form>
+            </div>
+            <div class="card-body manage">
+              <h4>Rank: {{ page.page_rank }}</h4>
+              <p>
+                <a href="" class="btn btn-primary">Page Views Per Million</a>
+                <span>{{page.page_views_per_million}}</span>
+              </p>
+              <p>
+                <a href="" class="btn btn-primary">Page Status</a>
+                <span>{{page.page_status}}</span>
+              </p>
+              <p>
+                <a href="" class="btn btn-primary">Page Views Per User</a>
+                <span>{{page.page_views_per_user}}</span>
+              </p>
+              <p>
+                <a href="" class="btn btn-primary">Reach Per Million</a>
+                <span>{{page.reach_per_million}}</span>
+              </p>
+            </div>
+
+            <div class="btns">
+              <a href="{% url 'index' %}" class="btn btn-primary manage-btn"
+                ><< Back</a
+              >
+              <form action="/delete_page/{{page.id}}/" method="post">{% csrf_token %}
+                <div class="text-right p-2">
+                    <button type="submit" onclick="return confirm('Are you sure you want to delete this page?')" class="btn btn-danger">Delete</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
