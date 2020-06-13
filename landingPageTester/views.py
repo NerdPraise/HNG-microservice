@@ -388,3 +388,5 @@ def api_link(url):
         if count_exists:
                     LinkCount.objects.filter(page_url=url).delete()
         count.save()
+
+

@@ -1,15 +1,38 @@
 from rest_framework import  status,generics
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.decorators import permission_classes
+from rest_framework.decorators import permission_classes, api_view
 from django.shortcuts import get_object_or_404
-from django.http import JsonResponse, HttpResponseRedirect,Http404
+from django.http import JsonResponse, HttpResponseRedirect,Http404, HttpResponse
 from django.urls import reverse
 from django_filters import rest_framework as filters
 from rest_framework.views import APIView
 from .models import *
 from .serializers import *
 from .views import  api_add, api_link, api_speed
+from django.views.decorators.http import require_http_methods
+from rest_framework.parsers import JSONParser
+
+
+@api_view(["POST"])
+def delete_page(request, url):
+    try:
+        page = Page.objects.get(page_url=url)
+    except Page.DoesNotExist:
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+    page.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+@api_view(["POST"])
+def create_page(request):
+    serializer = CreatePageSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, staus=status.HTTP_400_BAD_REQUEST)
 
 
 class TrafficHistory(generics.ListAPIView):

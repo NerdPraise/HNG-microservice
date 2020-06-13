@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import *
 from django.contrib.auth.models import User
 
+
 class TrafficSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
@@ -33,3 +34,8 @@ class CreateUserSerializer(serializers.ModelSerializer):
         if created:
             user.set_password(self.validated_data['password'])
             user.save()
+
+class CreatePageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Page
+        fields = '__all__'
