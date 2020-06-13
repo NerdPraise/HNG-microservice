@@ -57,6 +57,6 @@ urlpatterns = [
     To start with register to get signed up for your token via 'https://landingpagetester.microapi.dev/v1/register/' add your username and passord
     to the body using the key-value, username and password been the respective keys and the values been your set username and password, also specify content-type and make sure it is set to application/json. Set the HTTP Method to post and hit send.
     Next is to get your token via 'https://landingpagetester.microapi.dev/v1/api-token-auth/' still using the same body and content type as used at the register endpoint. Copy your token.
-    To test the endpoints disable/delete all info in the body tab and add your token to the header tab using key-value. Authorization as the key, Token <your token you copied> as the value or Set Authorization as API key in the Authorization Tab adding same key-value.LET'S TEST!!!."""
+    To test the endpoints disable/delete all info in the body tab and add your token to the header tab using key-value. Authorization as the key, Token <your token you copied> as the value or Set Authorization as API key in the Authorization Tab adding same key-value.LET'S TEST!!!.(Please take notes of endpoints that has trailing urls, include them.)"""
     ,permission_classes=(permissions.AllowAny,)))
 ]
