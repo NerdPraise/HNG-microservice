@@ -38,4 +38,4 @@ class CreateUserSerializer(serializers.ModelSerializer):
 class CreatePageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
-        fields = '__all__'
+        fields = ["page_url", "page_name" ]
